@@ -95,6 +95,9 @@ To ensure the Apache HTTP server is correctly installed and reachable through th
 http://35.94.202.24:80
 
 ```
+
+<img width="3000" height="2000" alt="apache work" src="https://github.com/user-attachments/assets/e52318b3-d784-4ce0-b825-153e2a7d474d" />
+
 ## Step 2: Installing MySQL
 
 ### 1. Database Engine Installation
@@ -102,5 +105,117 @@ To manage data for our application, I installed **MySQL Server**, a high-perform
 
 ```bash
 sudo apt install mysql-server -y
+
+```
+<img width="881" height="263" alt="Screenshot 2026-02-22 174823" src="https://github.com/user-attachments/assets/f943c949-1dfe-4e1a-a2e6-668f1b3d77ee" />
+
+### 2. Ensure the database is operational
+This ensures the engine is currently running and will automatically restart whenever the system reboots
+```
+sudo systemctl enable --now mysql
+sudo systemctl status mysql
+```
+<img width="881" height="263" alt="Screenshot 2026-02-22 174823" src="https://github.com/user-attachments/assets/c655b595-c9a9-4935-926c-7b0a717ab320" />
+
+
+
+I used systemctl to enable and start the MySQL service simultaneously. 
+
+### 2. Ensure the database is operational
+```
+sudo mysql
+```
+This connects to the MySQL server as the administrative database user root infered by the use of sudo when running the command.
+
+### 3. Set a password for root user using mysql_native_password as default authentication method.
+
+Here, the user's password was defined as "Password1"
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Password1';
+```
+Ithen had to exit the shell using 
+```
+exit
+```
+## Step 3: Installing PHP
+To enable dynamic web processing, I installed the PHP package along with essential dependencies. This included php-mysql to allow communication between PHP and the database, and libapache2-mod-php, which integrates PHP with the Apache web server to handle script execution.
+```
+sudo apt install php libapache2-mod-php php-mysql -y
+```
+<img width="938" height="354" alt="Screenshot 2026-02-22 175218" src="https://github.com/user-attachments/assets/d45daf18-1d5a-447b-ae60-9b22f66ebad3" />
+
+Confirm the PHP version
+```
+php -v
+```
+To test the environment effectively, I configured a dedicated Apache Virtual Host to manage the website files. Utilizing Virtual Hosts allows a single server to host multiple independent websites simultaneously, providing a professional structure that remains seamless and invisible to the end users. 
+
+## Step 3: Configure Apache Virtual Host (Apache)
+Prepare Document Root
+Create the directory for projectlamp and assign ownership to the current user:
+```
+sudo mkdir /var/www/projectlamp
+sudo chown -R $USER:$USER /var/www/projectlamp
+```
+### Create Virtual Host Configuration
+Open a new configuration file:
+```
+sudo vi /etc/apache2/sites-available/projectlamp.conf
+```
+Paste the following configuration:
+```
+<VirtualHost *:80>
+  ServerName projectlamp
+  DocumentRoot /var/www/projectlamp
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+### Enable Configuration and Reload Apache
+Enable the new site, disable the default site, and reload to apply changes:
+```
+sudo a2ensite projectlamp
+sudo a2dissite 000-default
+sudo apache2ctl configtest
+sudo systemctl reload apache2
+```
+### Test the Deployment
+Create a landing page to verify the virtual host is active:
+```
+echo "Hello LAMP from $(hostname)" > /var/www/projectlamp/index.html
+```
+Access your site via http://<Public-IP>:80.
+
+## Enable PHP on the Website
+
+### 1. Adjust Directory Index Priority
+To prioritize index.php over index.html, edit the Apache Directory Index configuration:
+```
+sudo vi /etc/apache2/mods-enabled/dir.conf
+```
+Update the order as follows:
+```
+DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+```
+### 2. Verify PHP Processing
+Reload Apache and create a test script:
+```
+sudo systemctl reload apache2
+echo "<?php phpinfo();" > /var/www/projectlamp/index.php
+```
+Refresh your browser. Once verified, remove the file for security:
+```
+sudo rm /var/www/projectlamp/index.php
+```
+
+<img width="1512" height="907" alt="php 111111" src="https://github.com/user-attachments/assets/d99886cd-563e-4de2-a4ba-bbbc6328cd0d" />
+
+## Conclusion
+The LAMP stack is now fully configured. This environment is ready for deploying scalable PHP applications on an Apache web server.
+
+
+
+
+
 
 
