@@ -2,7 +2,20 @@
 
 ## Introduction
 
-The LEMP stack is an open source web development platform that combines Linux, Nginx, MySQL, and PHP. This documentation explains the setup, configuration, and verification of the LEMP architecture on an AWS EC2 instance running Ubuntu Server 24.04 LTS.
+The **LEMP** stack is a high-performance, open-source web development platform. This guide provides a comprehensive walkthrough for deploying and configuring the four essential components on an **AWS** infrastructure:
+
+*   **Linux**: L
+*   **Nginx**: E (Engine-X)
+*   **MySQL**: M
+*   **PHP**: P
+
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Operating System** | [Linux (Ubuntu Server)](https://ubuntu.com) | The base operating system |
+| **Web Server** | [Nginx](https://www.nginx.com) | The high-performance HTTP web server |
+| **Database** | [MySQL](https://www.mysql.com) | Relational data storage |
+| **Scripting** | [PHP](https://www.php.net) | Server-side scripting via PHP-FPM |
 
 ---
 
