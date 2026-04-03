@@ -24,11 +24,20 @@ The **MERN** stack is a modern, high-performance, full-stack JavaScript framewor
 - SSH key pair
 - Security group with ports:
   - 22, 80, 443, 3000, 5000
+  
+<img width="1886" height="784" alt="Screenshot 2026-04-02 151222" src="https://github.com/user-attachments/assets/7ac1cf0f-f9d4-4c89-9712-630290009377" />
+
+- <img width="1875" height="791" alt="Screenshot 2026-04-02 151550" src="https://github.com/user-attachments/assets/cb359719-c818-4159-b9f3-1df01cfcdf83" />
+<img width="1875" height="756" alt="Screenshot 2026-04-02 151427" src="https://github.com/user-attachments/assets/6db1cda3-047c-4df5-82a6-53eb6bebc3ad" />
+
+
 
 ```bash
 chmod 400 my-ec2-key.pem
-ssh -i "my-ec2-key.pem" ubuntu@<PUBLIC_IP>
+ssh -i "my key.pem" ubuntu@ec2-44-243-84-48.us-west-2.compute.amazonaws.com
 ```
+<img width="1541" height="833" alt="Screenshot 2026-04-02 151904" src="https://github.com/user-attachments/assets/1a41ac13-5089-4837-9a23-b0023a628803" />
+<img width="1367" height="587" alt="Screenshot 2026-04-02 151821" src="https://github.com/user-attachments/assets/fe7a07a1-2a98-41fd-be01-e13fb4f2108a" />
 
 ---
 
@@ -43,7 +52,6 @@ sudo apt-get install nodejs -y
 node -v
 npm -v
 ```
-
 ---
 
 ## PROJECT INIT
