@@ -34,7 +34,7 @@ The **MERN** stack is a modern, high-performance, full-stack JavaScript framewor
 
 ```bash
 chmod 400 my-ec2-key.pem
-ssh -i "my key.pem" ubuntu@ec2-44-243-84-48.us-west-2.compute.amazonaws.com
+ssh -i ""my key.pem" ubuntu@ec2-44-243-84-48.us-west-2.compute.amazonaws.com
 ```
 <img width="1367" height="587" alt="Screenshot 2026-04-02 151821" src="https://github.com/user-attachments/assets/fe7a07a1-2a98-41fd-be01-e13fb4f2108a" />
 <img width="1541" height="833" alt="Screenshot 2026-04-02 151904" src="https://github.com/user-attachments/assets/1a41ac13-5089-4837-9a23-b0023a628803" />
@@ -61,13 +61,14 @@ sudo apt-get install nodejs -y
 <img width="943" height="616" alt="Screenshot 2026-04-02 152430" src="https://github.com/user-attachments/assets/c2144d07-eefa-41ad-b5e6-1754d74a3534" />
 <img width="921" height="740" alt="Screenshot 2026-04-02 152452" src="https://github.com/user-attachments/assets/804d5007-2346-4b04-a56c-380a4d1618ab" />
 
-
-
+br 
 
 ```bash
 node -v
 npm -v
 ```
+<img width="475" height="263" alt="Screenshot 2026-04-02 152735" src="https://github.com/user-attachments/assets/5b6f3f19-5457-4533-90ec-7fa57fdbd4ed" />
+
 ---
 
 ## PROJECT INIT
