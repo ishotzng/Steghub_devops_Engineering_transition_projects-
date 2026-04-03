@@ -1,15 +1,20 @@
-# MERN WEB STACK IMPLEMENTATION ON AWS
+# WEB STACK IMPLEMENTATION (MERN STACK) ON AWS
 
-## INTRODUCTION
+## Introduction
 
-The MERN stack is a combination of technologies used to build full-stack web applications:
+The **MERN** stack is a modern, high-performance, full-stack JavaScript framework used for building dynamic and scalable web applications. This guide provides a comprehensive walkthrough for deploying and configuring the four core components on an **AWS** infrastructure:
 
-- MongoDB – Database
-- Express.js – Backend framework
-- React.js – Frontend library
-- Node.js – Runtime environment
+* **MongoDB**: M  
+* **Express.js**: E  
+* **React.js**: R  
+* **Node.js**: N  
 
-This project demonstrates building and deploying a MERN stack app on AWS.
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Database** | [MongoDB](https://www.mongodb.com) | NoSQL database for storing application data |
+| **Backend Framework** | [Express.js](https://expressjs.com) | Handles server logic and API routing |
+| **Frontend Library** | [React.js](https://react.dev) | Builds interactive user interfaces |
+| **Runtime Environment** | [Node.js](https://nodejs.org) | Executes JavaScript on the server |
 
 ---
 
