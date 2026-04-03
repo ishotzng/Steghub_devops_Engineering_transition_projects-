@@ -45,10 +45,24 @@ ssh -i "my key.pem" ubuntu@ec2-44-243-84-48.us-west-2.compute.amazonaws.com
 
 ```bash
 sudo apt update && sudo apt upgrade -y
+```
+<img width="912" height="742" alt="Screenshot 2026-04-02 152107" src="https://github.com/user-attachments/assets/2ef0f072-5bae-4be9-8a3d-eae5e2b2ccb0" />
+<img width="902" height="697" alt="Screenshot 2026-04-02 152052" src="https://github.com/user-attachments/assets/00cfd04c-0027-4778-b3e1-50ef145c3b0b" />
+<img width="907" height="724" alt="Screenshot 2026-04-02 152000" src="https://github.com/user-attachments/assets/c9dadc3d-08da-4f7c-a340-d3da91aa9d6e" />
+
+
+```bash
 
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install nodejs -y
 
+```
+<img width="921" height="740" alt="Screenshot 2026-04-02 152452" src="https://github.com/user-attachments/assets/804d5007-2346-4b04-a56c-380a4d1618ab" />
+<img width="943" height="616" alt="Screenshot 2026-04-02 152430" src="https://github.com/user-attachments/assets/c2144d07-eefa-41ad-b5e6-1754d74a3534" />
+
+
+
+```bash
 node -v
 npm -v
 ```
