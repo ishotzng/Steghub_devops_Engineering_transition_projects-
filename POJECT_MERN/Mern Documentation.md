@@ -84,8 +84,9 @@ npm -v
 
 ---
 
-### Application Setup (Backend Project Initialization)
-## 1. Create Project Directory
+# Application Setup (Backend Project Initialization)
+
+### 1. Create Project Directory
 A dedicated folder was created for the To-Do application:
 
 ```bash
@@ -95,250 +96,42 @@ npm install express dotenv mongoose body-parser
 ```
 This initializes a Node.js project and generates a package.json file, which manages dependencies and scripts.
 ---
-
-## INDEX.JS (BACKEND SERVER)
-
-```js
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const routes = require('./routes/api');
-require('dotenv').config();
-
-const app = express();
-const port = process.env.PORT || 5000;
-
-mongoose.connect(process.env.DB)
-  .then(() => console.log("DB Connected"))
-  .catch(err => console.log(err));
-
-app.use(bodyParser.json());
-app.use('/api', routes);
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-```
-
----
-
-## ROUTES
+### 2. Backend Framework Setup (Express.js)
+# 1. Install Express.js
 
 ```bash
-mkdir routes && cd routes
-touch api.js
+npm install express
 ```
+Express simplifies API creation and routing in Node.js.
 
-```js
-const express = require('express');
-const router = express.Router();
-const Todo = require('../models/todo');
-
-router.get('/todos', (req, res) => {
-  Todo.find().then(data => res.json(data));
-});
-
-router.post('/todos', (req, res) => {
-  Todo.create(req.body).then(data => res.json(data));
-});
-
-router.delete('/todos/:id', (req, res) => {
-  Todo.findByIdAndDelete(req.params.id)
-    .then(data => res.json(data));
-});
-
-module.exports = router;
+### 2. Create Server File
+```bash
+touch index.js
 ```
+This file serves as the main entry point for the backend server.
 
----
-
-## MODEL
+### 3. Install Environment Manager
 
 ```bash
-mkdir models && cd models
-touch todo.js
+npm install dotenv
 ```
+This allows secure storage of configuration variables such as database credentials and ports.
 
-```js
-const mongoose = require('mongoose');
+### 4. Configure Express Server
 
-const TodoSchema = new mongoose.Schema({
-  action: {
-    type: String,
-    required: true
-  }
-});
+The backend server was configured in index.js:
+Handles HTTP requests
+Enables CORS access
+Defines API entry point
+Starts server on port 5000
 
-module.exports = mongoose.model('todo', TodoSchema);
-```
+This establishes the foundation of the backend API service.
 
----
 
-## ENV FILE
 
-```env
-DB=mongodb+srv://<username>:<password>@<cluster>/<dbname>
-```
 
----
 
-## REACT APP
 
-```bash
-npx create-react-app client
-cd client
-npm install axios
-```
-
----
-
-## ROOT PACKAGE.JSON SCRIPTS
-
-```json
-"scripts": {
-  "start": "node index.js",
-  "start-watch": "nodemon index.js",
-  "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
-}
-```
-
----
-
-## CLIENT PACKAGE.JSON
-
-```json
-"proxy": "http://localhost:5000"
-```
-
----
-
-## REACT COMPONENTS
-
-### Input.js
-```js
-import React, { Component } from 'react';
-import axios from 'axios';
-
-class Input extends Component {
-  state = { action: "" };
-
-  handleChange = (e) => {
-    this.setState({ action: e.target.value });
-  };
-
-  addTodo = () => {
-    axios.post('/api/todos', { action: this.state.action })
-      .then(() => {
-        this.props.getTodos();
-        this.setState({ action: "" });
-      });
-  };
-
-  render() {
-    return (
-      <div>
-        <input value={this.state.action} onChange={this.handleChange} />
-        <button onClick={this.addTodo}>Add</button>
-      </div>
-    );
-  }
-}
-
-export default Input;
-```
-
----
-
-### ListTodo.js
-```js
-import React from 'react';
-
-const ListTodo = ({ todos, deleteTodo }) => (
-  <ul>
-    {todos.length ? todos.map(todo => (
-      <li key={todo._id} onClick={() => deleteTodo(todo._id)}>
-        {todo.action}
-      </li>
-    )) : <li>No Todos</li>}
-  </ul>
-);
-
-export default ListTodo;
-```
-
----
-
-### Todo.js
-```js
-import React, { Component } from 'react';
-import axios from 'axios';
-import Input from './Input';
-import ListTodo from './ListTodo';
-
-class Todo extends Component {
-  state = { todos: [] };
-
-  componentDidMount() {
-    this.getTodos();
-  }
-
-  getTodos = () => {
-    axios.get('/api/todos')
-      .then(res => this.setState({ todos: res.data }));
-  };
-
-  deleteTodo = (id) => {
-    axios.delete(`/api/todos/${id}`)
-      .then(() => this.getTodos());
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>My Todos</h1>
-        <Input getTodos={this.getTodos} />
-        <ListTodo todos={this.state.todos} deleteTodo={this.deleteTodo} />
-      </div>
-    );
-  }
-}
-
-export default Todo;
-```
-
----
-
-### App.js
-```js
-import React from 'react';
-import Todo from './components/Todo';
-
-const App = () => (
-  <div>
-    <Todo />
-  </div>
-);
-
-export default App;
-```
-
----
-
-## RUN APPLICATION
-
-```bash
-npm run dev
-```
-
-- Backend: http://localhost:5000  
-- Frontend: http://localhost:3000  
-
----
 
 ## CONCLUSION
 
