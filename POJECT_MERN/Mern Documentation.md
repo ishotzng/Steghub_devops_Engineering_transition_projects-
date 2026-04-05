@@ -41,7 +41,11 @@ ssh -i ""my key.pem" ubuntu@ec2-44-243-84-48.us-west-2.compute.amazonaws.com
 
 ---
 
-## BACKEND SETUP
+### BACKEND SETUP
+## Step 1: Backend Configuration (Node.js + Express Setup)
+# 1. System Update
+Before installing dependencies, the system packages were updated to ensure stability and access to latest security patches.
+
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -49,11 +53,14 @@ sudo apt update && sudo apt upgrade -y
 <img width="912" height="742" alt="Screenshot 2026-04-02 152107" src="https://github.com/user-attachments/assets/5117f2a6-7843-490b-9f08-86019363a53a" />
 <img width="902" height="697" alt="Screenshot 2026-04-02 152052" src="https://github.com/user-attachments/assets/9ca7dfeb-d5a3-4f49-8f70-57aa80a6ee73" />
 <img width="907" height="724" alt="Screenshot 2026-04-02 152000" src="https://github.com/user-attachments/assets/353b4962-e4ca-408a-89f8-4cdef2fbaff3" />
+<br>
+<br>
 
 
+## Step 2 Add Node.js Repository
+To install Node.js (v18), the official NodeSource repository was added:
 
 ```bash
-
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install nodejs -y
 
@@ -61,7 +68,13 @@ sudo apt-get install nodejs -y
 <img width="943" height="616" alt="Screenshot 2026-04-02 152430" src="https://github.com/user-attachments/assets/c2144d07-eefa-41ad-b5e6-1754d74a3534" />
 <img width="921" height="740" alt="Screenshot 2026-04-02 152452" src="https://github.com/user-attachments/assets/804d5007-2346-4b04-a56c-380a4d1618ab" />
 
-br 
+<br>
+<br>
+<br>
+
+## Step 3: Verify Installation
+
+To confirm successful installation:
 
 ```bash
 node -v
@@ -71,14 +84,16 @@ npm -v
 
 ---
 
-## PROJECT INIT
+### Application Setup (Backend Project Initialization)
+## 1. Create Project Directory
+A dedicated folder was created for the To-Do application:
 
 ```bash
 mkdir Todo && cd Todo
 npm init -y
 npm install express dotenv mongoose body-parser
 ```
-
+This initializes a Node.js project and generates a package.json file, which manages dependencies and scripts.
 ---
 
 ## INDEX.JS (BACKEND SERVER)
