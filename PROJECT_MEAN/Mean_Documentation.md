@@ -42,10 +42,19 @@ The **MEAN** stack is a powerful, full-stack JavaScript framework used for build
 ---
 
     
-### 3.  **Security Group Rules**:
-    *   **Port 22**: SSH access.
-    *   **Port 80**: HTTP traffic.
-    *   **Port 443**: HTTPS traffic.
-    *   **Port 3300**: Custom TCP for the Book Application.
+### 3. Security Group Rules
+
+The following inbound rules were configured to ensure secure access and proper functionality of the application:
+
+
+| Protocol | Port | Source | Description |
+| :--- | :--- | :--- | :--- |
+| **SSH** | 22 | `0.0.0.0/0` | Remote access via Terminal |
+| **HTTP** | 80 | `0.0.0.0/0` | Standard web traffic |
+| **HTTPS** | 443 | `0.0.0.0/0` | Secure web traffic (SSL/TLS) |
+| **Custom TCP** | 3300 | `0.0.0.0/0` | Node.js Book Application Port |
+
+> **Note**: While `0.0.0.0/0` allows access from anywhere, for production environments, it is recommended to restrict Port 22 to your specific IP address for better security.
+
 
 <img width="1560" height="318" alt="Screenshot 2026-04-06 162420" src="https://github.com/user-attachments/assets/40e8af51-5ced-440e-843e-cbbff7bfc921" />
