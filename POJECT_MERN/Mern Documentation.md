@@ -94,6 +94,11 @@ mkdir Todo && cd Todo
 npm init -y
 npm install express dotenv mongoose body-parser
 ```
+<img width="924" height="480" alt="Screenshot 2026-04-02 153907" src="https://github.com/user-attachments/assets/e26b920f-75e2-4ee2-b5e6-9ac52fbc4535" />
+<img width="937" height="323" alt="Screenshot 2026-04-02 153901" src="https://github.com/user-attachments/assets/ffafb656-6052-4ccf-9aed-bf3c2c1f2d0e" />
+<img width="832" height="644" alt="Screenshot 2026-04-02 153517" src="https://github.com/user-attachments/assets/168bab0a-33dc-48ee-b651-c8d76413a7f8" />
+<img width="904" height="719" alt="Screenshot 2026-04-02 153502" src="https://github.com/user-attachments/assets/6c32b1cc-57f8-4917-bdfc-62ce03dbefc3" />
+<img width="918" height="553" alt="Screenshot 2026-04-02 152839" src="https://github.com/user-attachments/assets/f0632b96-c711-4960-b493-ecfd66d1af62" />
 
 
 This initializes a Node.js project and generates a package.json file, which manages dependencies and scripts.
@@ -867,7 +872,8 @@ code {
     monospace;
 }
 ```
- 
+ <img width="928" height="361" alt="Screenshot 2026-04-03 154509" src="https://github.com/user-attachments/assets/906ca743-6fcf-4a71-bf78-86bccc04fb25" />
+
 ---
  
 ### Run the Full Application
