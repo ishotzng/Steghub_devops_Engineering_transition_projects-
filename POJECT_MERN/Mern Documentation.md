@@ -94,6 +94,8 @@ mkdir Todo && cd Todo
 npm init -y
 npm install express dotenv mongoose body-parser
 ```
+
+
 This initializes a Node.js project and generates a package.json file, which manages dependencies and scripts.
 ---
 ### 2. Backend Framework Setup (Express.js)
@@ -103,12 +105,16 @@ mkdir Todo
 ls
 cd Todo
 ```
+ <img width="918" height="553" alt="Screenshot 2026-04-02 152839" src="https://github.com/user-attachments/assets/0f4fb0fa-ea22-4b87-984f-6464083840b6" />
  
 Initialise the project (creates `package.json`):
  
 ```bash
 npm init
 ```
+<img width="832" height="644" alt="Screenshot 2026-04-02 153517" src="https://github.com/user-attachments/assets/98a2b279-120e-41a5-a9b9-5eed8e465afe" />
+<img width="904" height="719" alt="Screenshot 2026-04-02 153502" src="https://github.com/user-attachments/assets/b7b88df3-db75-404f-9fb8-bcaa40ef993f" />
+
  
 Follow the prompts and press **Enter** to accept defaults. Type `yes` when asked to write the `package.json` file.
  
@@ -123,25 +129,33 @@ ls   # confirm package.json was created
 ```bash
 npm install express
 ```
- 
+ <img width="937" height="323" alt="Screenshot 2026-04-02 153901" src="https://github.com/user-attachments/assets/4b7d9100-1cf1-46d7-8270-93ec53a22915" />
+ <img width="924" height="480" alt="Screenshot 2026-04-02 153907" src="https://github.com/user-attachments/assets/0de2e8af-1d3c-4eef-bb2c-cd07f4a220c7" />
+
+
 Create the entry point file:
  
 ```bash
 touch index.js
 ls   # confirm index.js was created
 ```
+<img width="935" height="642" alt="Screenshot 2026-04-02 154100" src="https://github.com/user-attachments/assets/2c1335da-9ef4-4610-824f-5599b23431de" />
+
  
 Install the dotenv module:
  
 ```bash
 npm install dotenv
 ```
- 
+ <img width="935" height="642" alt="Screenshot 2026-04-02 154100" src="https://github.com/user-attachments/assets/3ec02633-0684-4a37-a8cf-564b62fa5921" />
+
+
 Open and populate `index.js`:
  
 ```bash
 vim index.js
 ```
+<img width="935" height="642" alt="Screenshot 2026-04-02 154100" src="https://github.com/user-attachments/assets/8bb03be1-9dca-4d9a-9de8-cc706954c95d" />
  
 Paste the following code:
  
@@ -166,7 +180,8 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 });
 ```
- 
+ <img width="947" height="590" alt="Screenshot 2026-04-02 154223" src="https://github.com/user-attachments/assets/f7523b55-8dc0-4d48-adf2-3805da5a651b" />
+
 > Save with `:w` and exit with `:qa` in vim.
  
 Start the server:
@@ -174,6 +189,8 @@ Start the server:
 ```bash
 node index.js
 ```
+<img width="951" height="596" alt="Screenshot 2026-04-02 154343" src="https://github.com/user-attachments/assets/0a76a67b-24b1-4724-b5d2-847f42df6e05" />
+
  
 You should see: `Server running on port 5000`
  
@@ -184,14 +201,15 @@ Access in browser:
 ```
 http://<PublicIP-or-PublicDNS>:5000
 ```
- 
+Port 5000 has been opened in ec2 security group.
 To get your server's public IP or DNS:
  
 ```bash
-curl -s http://169.254.169.254/latest/meta-data/public-ipv4        # Public IP
-curl -s http://169.254.169.254/latest/meta-data/public-hostname    # Public DNS
+curl http://44.243.84.48:500
+
 ```
- 
+ <img width="838" height="449" alt="Screenshot 2026-04-02 154512" src="https://github.com/user-attachments/assets/c9d77b29-89ca-472a-bb73-4888fe04875b" />
+
 ---
  
 ### Routes
@@ -210,6 +228,8 @@ cd routes
 touch api.js
 vim api.js
 ```
+<img width="951" height="287" alt="Screenshot 2026-04-02 155115" src="https://github.com/user-attachments/assets/a1c44b08-c5a8-49c8-ad64-6c8c9dd1b996" />
+
  
 Paste the following:
  
@@ -231,7 +251,8 @@ router.delete('/todos/:id', (req, res, next) => {
  
 module.exports = router;
 ```
- 
+ <img width="851" height="528" alt="Screenshot 2026-04-02 155133" src="https://github.com/user-attachments/assets/eac8f42a-cbf0-4c3c-9024-e3496f41fb59" />
+
 ---
  
 ### Models
@@ -242,19 +263,21 @@ Install Mongoose (MongoDB ODM for Node.js):
 cd ..
 npm install mongoose
 ```
- 
+ <img width="928" height="447" alt="Screenshot 2026-04-02 155402" src="https://github.com/user-attachments/assets/a48a5497-3373-4c3c-b55c-f85a8f28bf97" />
+
 Create the models directory and file:
  
 ```bash
 mkdir models && cd models && touch todo.js
 ```
- 
+<img width="942" height="645" alt="Screenshot 2026-04-02 155248" src="https://github.com/user-attachments/assets/11bce67b-d9f6-4948-995b-212173e57ea8" />
 Open and populate `todo.js`:
  
 ```bash
 vim todo.js
 ```
- 
+ <img width="947" height="592" alt="Screenshot 2026-04-02 155556" src="https://github.com/user-attachments/assets/3185fd30-5b1c-4e55-92ed-70319a3e10fc" />
+
 ```javascript
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -272,9 +295,13 @@ const Todo = mongoose.model('todo', TodoSchema);
  
 module.exports = Todo;
 ```
+<img width="933" height="695" alt="Screenshot 2026-04-02 155546" src="https://github.com/user-attachments/assets/2c02328d-e7a0-4b93-9e2d-28aef6dfe632" />
+
  
 Update `routes/api.js` to use the model. Open the file and clear it with `:%d`, then paste:
- 
+ <img width="939" height="563" alt="Screenshot 2026-04-02 155641" src="https://github.com/user-attachments/assets/73bae8cd-3152-40c6-b791-2703d2721911" />
+<img width="941" height="567" alt="Screenshot 2026-04-02 155706" src="https://github.com/user-attachments/assets/3409512d-0e42-41df-9515-d8b7d436cf4b" />
+
 ```javascript
 const express = require('express');
 const router = express.Router();
@@ -305,7 +332,8 @@ router.delete('/todos/:id', (req, res, next) => {
  
 module.exports = router;
 ```
- 
+ <img width="935" height="773" alt="Screenshot 2026-04-02 155743" src="https://github.com/user-attachments/assets/be26c2ef-6278-4478-9870-c0466892f3b6" />
+
 ---
  
 ### MongoDB Database (mLab)
@@ -314,6 +342,8 @@ module.exports = router;
 2. Allow access from anywhere (**for testing only**).
 3. Set entry deletion time to **1 Week** (not 6 hours).
 4. Create a database and collection.
+   <img width="1666" height="697" alt="Screenshot 2026-04-02 161248" src="https://github.com/user-attachments/assets/47e09552-b62f-47bb-9024-d47d8ca3908b" />
+
  
 Create the `.env` file in the `Todo` directory:
  
@@ -321,16 +351,20 @@ Create the `.env` file in the `Todo` directory:
 touch .env
 vi .env
 ```
- 
+ <img width="931" height="500" alt="Screenshot 2026-04-02 161408" src="https://github.com/user-attachments/assets/388470a0-9dc0-469b-9241-3177cd3a90ab" />
+
 Add your connection string:
  
 ```
-DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites=true&w=majority'
+This format DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites=true&w=majority'
 ```
- 
-> Replace `<username>`, `<password>`, `<network-address>`, and `<dbname>` with your actual credentials.
+ <img width="951" height="370" alt="Screenshot 2026-04-02 161440" src="https://github.com/user-attachments/assets/aebfc7dc-10da-4ca8-b35a-167cc24e07e8" />
+
+
  
 Update `index.js` (clear with `:%d` in vim and paste):
+<img width="939" height="529" alt="Screenshot 2026-04-02 161625" src="https://github.com/user-attachments/assets/d63e1a3d-0cd1-4ed1-a7f2-8b4c6ff81792" />
+
  
 ```javascript
 const express = require('express');
@@ -369,13 +403,15 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 });
 ```
- 
+ <img width="952" height="779" alt="Screenshot 2026-04-02 161712" src="https://github.com/user-attachments/assets/887d0933-5def-4b85-af3e-e51aa70aa6ae" />
+
 Start the server:
  
 ```bash
 node index.js
 ```
- 
+ <img width="806" height="131" alt="Screenshot 2026-04-02 163846" src="https://github.com/user-attachments/assets/471665bd-7ce9-4e4f-8c00-6aa35b9ac0f1" />
+
 You should see: `Database connected successfully`
  
 ---
@@ -385,10 +421,11 @@ You should see: `Database connected successfully`
 Install [Postman](https://www.postman.com/downloads/) to test the API endpoints.
  
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `http://<PublicIP>:5000/api/todos` | Create a new task |
-| GET | `http://<PublicIP>:5000/api/todos` | Retrieve all tasks |
-| DELETE | `http://<PublicIP>:5000/api/todos/:id` | Delete a task by ID |
+| :--- | :--- | :--- |
+| POST | `http://52.39.50.10:5000/api/Todo` | Create a new task |
+| GET | `http://52.39.50.10:5000/api/Todo` | Retrieve all tasks |
+| DELETE | `http://52.39.50.10:5000/api/Todo:id` | Delete a task by ID |
+ 
  
 > **Note:** Set the header `Content-Type: application/json` for POST requests.
  
@@ -397,6 +434,12 @@ Install [Postman](https://www.postman.com/downloads/) to test the API endpoints.
 - [x] Display a list of tasks – HTTP GET request
 - [x] Add a new task to the list – HTTP POST request
 - [x] Delete an existing task from the list – HTTP DELETE request
+      <img width="1419" height="856" alt="Screenshot 2026-04-03 143658" src="https://github.com/user-attachments/assets/5a0e35b8-1763-48f8-9170-f04af552ad24" />
+<img width="948" height="881" alt="Screenshot 2026-04-03 143430" src="https://github.com/user-attachments/assets/4df6a9a1-d5c4-4537-a2e6-8e829264b542" />
+<img width="1405" height="508" alt="Screenshot 2026-04-03 143208" src="https://github.com/user-attachments/assets/933b2656-7f60-4b03-8f01-c6b3cb031046" />
+<img width="314" height="160" alt="Screenshot 2026-04-03 143158" src="https://github.com/user-attachments/assets/2ddf70cf-026b-4a78-8ce6-24ba768098fb" />
+<img width="1401" height="491" alt="Screenshot 2026-04-03 143143" src="https://github.com/user-attachments/assets/64454bae-3873-48cd-b63c-210b0511ae73" />
+
  
 ---
  
@@ -409,17 +452,20 @@ npx create-react-app client
 ```
  
 This creates a `client` folder containing all React code.
- 
+ <img width="948" height="896" alt="Screenshot 2026-04-03 144019" src="https://github.com/user-attachments/assets/434f8dfa-872d-472e-911a-69d908d32399" />
+
 ### Install Dependencies
  
 ```bash
-# Run multiple commands simultaneously from one terminal
+
 npm install concurrently --save-dev
  
 # Auto-restart server on code changes
 npm install nodemon --save-dev
 ```
- 
+ <img width="943" height="945" alt="Screenshot 2026-04-03 144134" src="https://github.com/user-attachments/assets/93f949ca-bdff-4d9b-877a-cbaf8875a260" />
+<img width="948" height="896" alt="Screenshot 2026-04-03 144019" src="https://github.com/user-attachments/assets/d078a728-33be-4210-a07d-15be58e1eda0" />
+
 Update the `scripts` section in `Todo/package.json`:
  
 ```json
@@ -452,6 +498,7 @@ From the `Todo` directory:
 ```bash
 npm run dev
 ```
+
  
 The app will start on **http://localhost:3000**
  
@@ -544,13 +591,17 @@ cd ..          # move to src folder
 cd ..          # move to client folder
 npm install axios
 ```
+<img width="949" height="736" alt="Screenshot 2026-04-03 153852" src="https://github.com/user-attachments/assets/df0c8c93-bc7f-4f6e-b7c1-1125d8588ec7" />
+
  
 Then go back to the `components` directory:
  
 ```bash
 cd src/components
 ```
- 
+ <img width="949" height="713" alt="Screenshot 2026-04-03 153957" src="https://github.com/user-attachments/assets/1dc1ac15-0b83-4ffd-ba04-6b697355464f" />
+<img width="957" height="946" alt="Screenshot 2026-04-03 153916" src="https://github.com/user-attachments/assets/b0f5d17f-fac7-472e-bfcb-1e082155856e" />
+
 ---
  
 ### ListTodo.js
@@ -558,6 +609,8 @@ cd src/components
 ```bash
 vi ListTodo.js
 ```
+<img width="949" height="713" alt="Screenshot 2026-04-03 153957" src="https://github.com/user-attachments/assets/602d8f44-0982-4bd1-b0c2-a76119a990b6" />
+
  
 Paste the following:
  
@@ -586,7 +639,8 @@ const ListTodo = ({ todos, deleteTodo }) => {
  
 export default ListTodo;
 ```
- 
+ <img width="938" height="830" alt="Screenshot 2026-04-03 154024" src="https://github.com/user-attachments/assets/45d765f5-d111-4436-a80b-7f70c4666cfa" />
+
 ---
  
 ### Todo.js
@@ -661,7 +715,8 @@ Move to the `src` folder and update `App.js`:
 cd ..
 vi App.js
 ```
- 
+ <img width="956" height="369" alt="Screenshot 2026-04-03 154250" src="https://github.com/user-attachments/assets/3ec671ed-dd80-49e0-aecc-e395b2fa5734" />
+
 Replace the content with:
  
 ```javascript
@@ -680,7 +735,8 @@ const App = () => {
  
 export default App;
 ```
- 
+ <img width="936" height="669" alt="Screenshot 2026-04-03 154303" src="https://github.com/user-attachments/assets/f889ff58-b456-40dc-8a4c-959850a2ea46" />
+
 ---
  
 ### Update App.css
@@ -788,7 +844,8 @@ li {
 ```bash
 vim index.css
 ```
- 
+ <img width="928" height="361" alt="Screenshot 2026-04-03 154509" src="https://github.com/user-attachments/assets/5d5b2152-a5f4-4ff9-b6d8-a1f083d0b3ff" />
+
 Replace the content with:
  
 ```css
@@ -821,8 +878,11 @@ Navigate back to the `Todo` root directory and start the app:
 cd ../..
 npm run dev
 ```
- 
-Assuming no errors when saving all files, the To-Do app should be ready and fully functional with:
+ <img width="956" height="949" alt="Screenshot 2026-04-03 154557" src="https://github.com/user-attachments/assets/c55bb718-eccf-4e89-8808-dbf5c3ea19a2" />
+ <img width="1597" height="861" alt="Screenshot 2026-04-03 161528" src="https://github.com/user-attachments/assets/cc6c5a81-eeb7-4573-9221-150174aecf7b" />
+
+
+The Todoo app is ready and fully functional with:
  
 - Creating a task
 - Deleting a task
