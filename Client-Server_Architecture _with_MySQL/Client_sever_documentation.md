@@ -2,10 +2,19 @@
 
 ---
 
-## Overview
+The **Client-Server** architecture is a fundamental network model in which two machines
+communicate over a network. One requesting resources or services (the client),
+and the other providing them (the server). This guide walks through a complete
+deployment of a **MySQL**-based client-server setup on **AWS** infrastructure,
+where two EC2 instances are configured to communicate securely over a private network.
 
-This project demonstrates how to set up a MySQL client-server architecture using two Linux-based Ubuntu servers hosted on AWS EC2. The **mysql server** hosts the database engine, while the **mysql client** connects to it remotely over the local network — no SSH required for the database connection itself.
-
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Server Instance** | [AWS EC2](https://aws.amazon.com/ec2) (Ubuntu 24.04) | Hosts the MySQL Server database engine |
+| **Client Instance** | [AWS EC2](https://aws.amazon.com/ec2) (Ubuntu 24.04) | Runs MySQL Client to query the remote server |
+| **Database Engine** | [MySQL Server](https://www.mysql.com) | Stores, manages, and serves relational data |
+| **Client Utility** | [MySQL Client](https://www.mysql.com) | Issues SQL queries to the remote database |
+| **Network Layer** | AWS VPC (Private IP) | Enables secure internal communication on port 3306 |
 ---
 
 ## Infrastructure Summary
