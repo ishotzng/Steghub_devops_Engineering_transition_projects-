@@ -1,29 +1,59 @@
-# Web Solution With WordPress (Project 102)
+# WEB SOLUTION WITH WORDPRESS ON AWS
 
-This project demonstrates deploying a **WordPress-based web solution**
-using two AWS EC2 instances running **Red Hat Enterprise Linux 10.2**.
+## Introduction
 
--   **Web Server** -- Apache, PHP and WordPress
--   **Database Server** -- MySQL 8.4
--   **Storage** -- LVM configured with three 10 GiB EBS volumes on each
-    server
+This project demonstrates how to deploy a **WordPress-based web solution** on **Amazon Web Services (AWS)** using two **Red Hat Enterprise Linux (RHEL) 10.2** EC2 instances. The infrastructure follows a two-tier architecture where the web server hosts the WordPress application, while a dedicated database server runs MySQL 8.4.
+
+To improve storage management and scalability, **Logical Volume Manager (LVM)** is configured using three **10 GiB Amazon EBS volumes** on each server. This setup separates application data, database files, and system logs into dedicated logical volumes, making storage easier to manage and extend.
+
+The deployment consists of the following core components:
+
+- **Apache HTTP Server** – Hosts the WordPress website.
+- **PHP** – Executes WordPress application code.
+- **WordPress** – Content Management System (CMS).
+- **MySQL 8.4** – Relational database used by WordPress.
+- **LVM (Logical Volume Manager)** – Manages storage across multiple EBS volumes.
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Operating System** | Red Hat Enterprise Linux 10.2 | Hosts the application and database servers |
+| **Web Server** | Apache HTTP Server | Serves the WordPress application |
+| **Programming Language** | PHP | Processes WordPress application logic |
+| **Content Management System** | WordPress | Website and content management platform |
+| **Database Server** | MySQL 8.4 | Stores WordPress data |
+| **Storage Management** | LVM (Logical Volume Manager) | Manages logical storage volumes across EBS disks |
+| **Cloud Platform** | Amazon EC2 | Virtual servers hosting the solution |
+| **Persistent Storage** | Amazon EBS | Block storage attached to EC2 instances |
 
 ## Project Architecture
 
--   **Web Server**
-    -   Apache HTTP Server
-    -   PHP
-    -   WordPress
-    -   LVM (`apps-lv`, `logs-lv`)
--   **Database Server**
-    -   MySQL 8.4
-    -   LVM (`db-lv`, `logs-lv`)
--   **Networking**
-    -   Web Server Private IP: **172.31.44.246**
-    -   Database Server Private IP: **172.31.42.120**
-    -   WordPress connects to MySQL over port **3306**
--   **Public Access**
-    -   Web Server Public IP: **44.245.157.133**
+The solution consists of two dedicated EC2 instances connected through a private network:
+
+### Web Server
+
+- Apache HTTP Server
+- PHP
+- WordPress
+- LVM configured with:
+  - `apps-lv`
+  - `logs-lv`
+
+### Database Server
+
+- MySQL 8.4
+- LVM configured with:
+  - `db-lv`
+  - `logs-lv`
+
+### Networking
+
+- Web Server Private IP: **172.31.44.246**
+- Database Server Private IP: **172.31.42.120**
+- WordPress communicates with MySQL over **TCP Port 3306**
+
+### Public Access
+
+- Web Server Public IP: **44.245.157.133**
 
 ------------------------------------------------------------------------
 
