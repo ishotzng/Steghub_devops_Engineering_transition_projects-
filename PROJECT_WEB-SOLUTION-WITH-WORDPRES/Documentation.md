@@ -179,6 +179,9 @@ DB_PASSWORD=mypass
 DB_HOST=172.31.42.120
 ```
 
+<img width="946" height="905" alt="Screenshot 2026-07-01 155905" src="https://github.com/user-attachments/assets/5657cec9-1420-494c-b782-1e667b245463" />
+
+
 ------------------------------------------------------------------------
 
 # Step 4 --- Install MySQL
@@ -201,6 +204,11 @@ GRANT ALL ON wordpress.* TO 'myuser'@'172.31.44.246';
 FLUSH PRIVILEGES;
 SHOW DATABASES;
 ```
+
+
+
+<img width="887" height="714" alt="Screenshot 2026-07-01 163036" src="https://github.com/user-attachments/assets/f00e067f-7610-4531-84a1-95fb525ad178" />
+
 
 ------------------------------------------------------------------------
 
