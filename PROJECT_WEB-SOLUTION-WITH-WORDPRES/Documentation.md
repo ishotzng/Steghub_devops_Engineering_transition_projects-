@@ -195,6 +195,20 @@ Browse to:
 ``` text
 http://44.245.157.133/wordpress
 ```
+<img width="1830" height="932" alt="Screenshot 2026-07-01 164525" src="https://github.com/user-attachments/assets/0a04205f-6d60-4477-8d67-b78a8c2b8403" />
+
+--------------------------
+
+<img width="1875" height="954" alt="Screenshot 2026-07-01 164605" src="https://github.com/user-attachments/assets/4389d101-96f7-4d36-b390-f9e64f7f8e76" />
+
+--------------------------
+
+<img width="1175" height="569" alt="Screenshot 2026-07-01 165020" src="https://github.com/user-attachments/assets/99403128-94c4-4d45-aed1-defebea17b87" />
+
+--------------------------
+
+<img width="1753" height="999" alt="Screenshot 2026-07-01 165102" src="https://github.com/user-attachments/assets/3f71eb60-1845-4dd4-a06d-79d7be6408db" />
+
 
 The WordPress installation wizard should appear. Complete the
 installation with your preferred site title, administrator username,
